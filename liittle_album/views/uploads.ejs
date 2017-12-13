@@ -1,0 +1,71 @@
+<!--要做的这个模板首页面，为一个bootstrap页面，后台工程师很喜欢使用bootstrap页面，因为其很快就可以将一个页面做出来，且做出来的页面，所有的平台都能很好的兼容-->
+<!--插入bootstrap基本的模板页面-->
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+<!--这些引用的路径，并非是相对地址，而是链接，这一点与以往的html页面不同； 页面在载入的时候，会向href指向的地址，去请求bootstrap.min.css文件，相当于发送了一个127.0.0.1/css/bootstrap.min.css请求，前面的一串是app.use(express.static())静态出来的；所谓静态出来的就是指，当node接收到指向某个文件的请求时，会直接用fs模块去读取相应的文件，明白了这一点，就知道链接怎么写了-->
+<!--这些给出的链接路径，实际上在页面加载过程中，都会转译为路径，/css/bootstrap.min.css会被转译成为：127.0.0.1/css/bootstrap.min.css, 即上面的路径实际上就是url；-->
+  </head>
+  <body>
+
+<!--插入bootstrap导航条-->
+
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">小小相册</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li ><a href="/">全部相册</a></li>
+        <li class="active"><a href="/uploads">上传</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<!--插入导航条结束位置-->
+<!--表单开始位置-->
+<div class="container">
+  <div class="row">
+
+     <form role="form" style="width:40%;" method="post" action="#" enctype="multipart/form-data" >
+      <div class="form-group">
+        <label for="exampleInputEmail1">选择文件夹</label>
+        <select class="form-control" name="album">
+          <% for(var i=0; i<albums.length; i++){ %>
+           <option><%= albums[i] %></option>
+          <% } %>
+
+      
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputFile">选择图片</label>
+        <input type="file" id="exampleInputFile" name="picture">
+      </div>
+      <button type="submit" class="btn btn-default">上传</button>
+    </form>
+
+  </div>
+</div>
+
+<!--表单结束位置-->
+
+    <script src="/js/jquery-3.1.1"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/js/bootstrap.min.js"></script>
+  </body>
+</html>
