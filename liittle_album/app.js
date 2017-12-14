@@ -19,4 +19,5 @@ app.use(function(req,res){
     res.render("err"); 
 })
 
+// 监听的端口号，其实exppress只是提供了一个顶层的路由，与顶层的中间件
 app.listen(3000)
